@@ -23,8 +23,9 @@ public class SearchController : Controller
     public IActionResult Results(string searchType, string searchTerm)
     {
         List<Job> jobs = new List<Job>();
-        if (searchType.Equals("All") && searchTerm.Equals("View All"))
+        if (searchType == "all" || string.IsNullOrEmpty(searchTerm))
         {
+
             jobs = JobData.FindAll();
         }
         else
